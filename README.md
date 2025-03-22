@@ -16,10 +16,8 @@ make install
 ```sh
 cd Google-Test-Simple
 rm -rf build
-mkdir build
-cd build
-cmake ..
-cmake --build .
+mkdir build && cd build
+cmake .. && make
 ./runTests
 ```
 
@@ -45,8 +43,29 @@ xdg-open .output/coverage_report/index.html  # On Linux
 
 ### Coverage Result
 
-![Coverage Result](resources/html_report.png)
+**Console:**
 
+```sh
+Overall coverage rate:
+  source files: 2
+  lines.......: 100.0% (34 of 34 lines)
+  functions...: 93.1% (27 of 29 functions)
+Message summary:
+  1 warning message:
+    category: 1
+lcov --ignore-errors inconsistent,unsupported,format,unused --list .output/coverage.info
+                             |Lines       |Functions  
+Filename                     |Rate     Num|Rate    Num
+======================================================
+function_need_to_test.cpp    | 100%      7| 100%     1
+test.cpp                     | 100%     27|92.9%    28
+======================================================
+                       Total:| 100%     34|93.1%    29
+```
+
+**HTML report**
+
+![Coverage Result](resources/html_report.png)
 
 
 The coverage report will be generated in `.output/coverage_report/index.html`. Open this file in a web browser to view the detailed coverage report.
